@@ -22,7 +22,7 @@ Source:        http://pypi.python.org/packages/source/p/pyudev/pyudev-%{version}
 %endif
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires: python-devel
+BuildRequires: python-devel python-setuptools libudev-devel
 
 Requires:      python-apipkg
 Requires:      udev
