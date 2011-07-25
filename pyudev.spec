@@ -1,14 +1,25 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%define use_git 0
+%define pyudev_version 0.11
+%define git_version git20110715
 
 Summary:       Python binding for libudev
 Name:          pyudev
-Version:       0.8
+%if %use_git
+Version:       %{pyudev_version}.%{git_version}
+%else
+Version:       %{pyudev_version}
+%endif
 Release:       1%{?dist}
 
 License:       LGPLv2+
 Group:         Development/Languages
 URL:           http://packages.python.org/pyudev
+%if %use_git
+Source:        %{name}-%{version}.tar.bz2
+%else
 Source:        http://pypi.python.org/packages/source/p/pyudev/pyudev-%{version}.tar.gz
+%endif
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: python-devel
@@ -62,7 +73,11 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc CHANGES.rst COPYING README.rst
 %{python_sitelib}/pyudev/*
-%{python_sitelib}/pyudev-0.8-py?.?.egg-info/*
+%if %use_git
+%{python_sitelib}/pyudev-%{pyudev_version}*-py?.?.egg-info/*
+%else
+%{python_sitelib}/pyudev-%{pyudev_version}-py?.?.egg-info/*
+%endif
 %exclude %{python_sitelib}/pyudev/*qt*
 
 
@@ -72,5 +87,8 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Jul 25 2011 Alexei Panov <elemc AT atisserv DOT ru> - 0.11-1
+- new version
+- change spec for using git versions
 * Wed Feb  9 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 0.8-1
 - initial build for Fedora
