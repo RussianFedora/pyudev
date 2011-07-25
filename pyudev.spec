@@ -1,6 +1,6 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%define use_git 0
-%define pyudev_version 0.11
+%define use_git 1
+%define pyudev_version 0.12
 %define git_version git20110715
 
 Summary:       Python binding for libudev
@@ -87,6 +87,8 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Jul 25 2011 Alexei Panov <elemc AT atisserv DOT ru> - 0.11-1
+- new version (development) be careful!
 * Mon Jul 25 2011 Alexei Panov <elemc AT atisserv DOT ru> - 0.11-1
 - new version
 - change spec for using git versions
