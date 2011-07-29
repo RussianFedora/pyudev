@@ -10,7 +10,7 @@ Version:       %{pyudev_version}.%{git_version}
 %else
 Version:       %{pyudev_version}
 %endif
-Release:       1%{?dist}
+Release:       1%{?dist}.R
 
 License:       LGPLv2+
 Group:         Development/Languages
@@ -87,7 +87,7 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Mon Jul 25 2011 Alexei Panov <elemc AT atisserv DOT ru> - 0.11-1
+* Mon Jul 25 2011 Alexei Panov <elemc AT atisserv DOT ru> - 0.11-1.R
 - new version
 - change spec for using git versions
 * Wed Feb  9 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 0.8-1
