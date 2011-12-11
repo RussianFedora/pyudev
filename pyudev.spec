@@ -1,6 +1,6 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %define use_git 0
-%define pyudev_version 0.11
+%define pyudev_version 0.13
 %define git_version git20110715
 
 Summary:       Python binding for libudev
@@ -87,8 +87,12 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Sun Dec 11 2011 Arkady L. Shane <ashejn@russianfedora.ru> - 0.13-1.R
+- update to 0.13
+
 * Mon Jul 25 2011 Alexei Panov <elemc AT atisserv DOT ru> - 0.11-1.R
 - new version
 - change spec for using git versions
+
 * Wed Feb  9 2011 Arkady L. Shane <ashejn@yandex-team.ru> - 0.8-1
 - initial build for Fedora
